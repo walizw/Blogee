@@ -1,0 +1,10 @@
+* TODO Collaboration
+
+Two - or more - users can work together in a post (and of course their earnings
+should be splitten equally)
+
+* TODO Website builder
+
+A user should be able to design their blog as they want to, to create, delete
+and reorganize menus, to change colours, to set a header image, set a post style
+page, and that kind of things.

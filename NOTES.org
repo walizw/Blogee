@@ -1,0 +1,13 @@
+* Blogs
+
+Every user will be able to create a blog, what is a blog? A blog is basically a
+data structure that contains all the posts that belongs to this blog, a user can
+define custom tags and categories for their blogs based in the official ones,
+for example, let's suppose there's an official category called "Technology" and
+a user has a blog where they post entries about deep learning, they could create
+a category called "Deep Learning" that is based on "Technology", this way we
+will be able to guess what a category of a user's blog is about.
+
+A category will have a =parent_id= which is basically the category it's based
+upon, if somebody searches for technology posts from that category and
+categories whose =parent_id= is the same of technology's id, will be returned.
