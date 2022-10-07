@@ -35,6 +35,28 @@ export default {
 	    return {"error": e}
 	}
     },
+    async get_blog_categories (id) {
+	try {
+	    let response = await axios.get (config.ENDPOINT + `blog/${id}/categories`)
+	    return response.data
+	} catch (e) {
+	    return {"error": e}
+	}
+    },
+    async create_blog_category (id, form_data) {
+	try {
+	    let response = await axios.post (config.ENDPOINT + `category/create/`,
+					     form_data, {
+						 headers: {
+						     "Content-Type": "multipart/form-data",
+						     "Authorization": `Bearer ${auth.get_user_access ()}`
+						 }
+					     })
+	    return {"success": 1}
+	} catch (e) {
+	    return {"error": e}
+	}
+    },
     async update_blog (id, form_data) {
 	try {
 	    let response = await axios.put (
@@ -45,6 +67,15 @@ export default {
 			"Authorization": `Bearer ${auth.get_user_access ()}`
 		    }
 		})
+
+	    return {"success": 1}
+	} catch (e) {
+	    return {"error": e}
+	}
+    },
+    async delete_blog (id) {
+	try {
+	    let response = await axios.delete (config.ENDPOINT + `blog/${id}/delete/`)
 
 	    return {"success": 1}
 	} catch (e) {

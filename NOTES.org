@@ -11,3 +11,8 @@ will be able to guess what a category of a user's blog is about.
 A category will have a =parent_id= which is basically the category it's based
 upon, if somebody searches for technology posts from that category and
 categories whose =parent_id= is the same of technology's id, will be returned.
+
+* Languages
+
+The language of a category/post will be obtained through the blog model at
+perform_create.

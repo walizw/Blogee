@@ -4,17 +4,33 @@
     <form @submit="submit">
 	<div>
 	    <label>Name: </label>
-	    <input type="text" placeholder="name" v-model="name" />
+	    <input type="text" placeholder="name" v-model="name"
+		   required/>
 	</div>
 
 	<div>
 	    <label>About: </label>
-	    <textarea cols="30" v-model="about" rows="10"></textarea>
+	    <textarea cols="30" v-model="about" rows="10"
+		      required></textarea>
 	</div>
 
 	<div>
 	    <label>Header Image: </label>
 	    <input type="file" ref="header_img" @change="changed_file" />
+	</div>
+
+	<div>
+	    <label>Language: </label>
+	    <select v-model="language" required>
+		<option value="en">English</option>
+		<option value="es">Spanish</option>
+		<option value="fr">French</option>
+		<option value="it">Italian</option>
+		<option value="jp">Japanese</option>
+		<option value="kr">Korean</option>
+		<option value="zh">Chinese</option>
+		<option value="de">Deutsch</option>
+	    </select>
 	</div>
 
 	<input type="submit" value="Create!"/>
@@ -32,6 +48,7 @@
 	     name: "",
 	     about: "",
 	     header_img: "",
+	     language: "",
 	     error: ""
 	 }
      },
@@ -46,6 +63,7 @@
 	     form_data.append ("name", this.name)
 	     form_data.append ("about", this.about)
 	     form_data.append ("header_img", this.header_img)
+	     form_data.append ("lang", this.language)
 	     
 	     let response = await blogs.create_blog (form_data)
 

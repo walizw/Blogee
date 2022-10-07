@@ -1,3 +1,7 @@
+* TODO Update Category
+
+* TODO Delete Category
+
 * TODO Collaboration
 
 Two - or more - users can work together in a post (and of course their earnings
