@@ -9,6 +9,7 @@ class BlogSerializer (serializers.ModelSerializer):
             "id",
             "name",
             "slug",
+            "lang",
             "author",
             "header_img",
             "creation_date",

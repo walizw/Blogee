@@ -12,6 +12,9 @@ urlpatterns = [
     path ("user/<int:pk>/blogs/", views.UserBlogsAPIView.as_view ()),
     path ("blogs/", views.BlogsAPIView.as_view ()),
     path ("blog/<int:pk>/", views.BlogAPIView.as_view ()),
+    path ("blog/<int:pk>/categories/", views.BlogCategoriesAPIView.as_view ()),
     path ("blog/<int:pk>/update/", views.BlogUpdateAPIView.as_view ()),
-    path ("blog/create/", views.BlogCreateAPIView.as_view ())
+    path ("blog/<int:pk>/delete/", views.BlogDeleteAPIView.as_view ()),
+    path ("blog/create/", views.BlogCreateAPIView.as_view ()),
+    path ("category/create/", views.CategoryCreateAPIView.as_view ()),
 ]

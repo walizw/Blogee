@@ -4,6 +4,7 @@ from django.utils import timezone
 class Blog (models.Model):
     # Required fields
     name = models.CharField (max_length=256)
+    lang = models.CharField (max_length=12)
 
     # Optional fields
     author = models.DecimalField (max_digits=10,

@@ -7,12 +7,12 @@ class Post (models.Model):
     author = models.DecimalField (max_digits=10, decimal_places=0) # User id that posted this
     blog = models.DecimalField (max_digits=10, decimal_places=0) # The blog id that this post belongs to
     content = models.TextField ()
+    lang = models.CharField (max_length=12)
 
     # Optional fields
     slug = models.CharField (max_length=256, blank=True, null=True)
     date = models.DateTimeField (default=timezone.now)
     thumbnail = models.FileField (upload_to="thumbs/", blank=True, null=True)
-    lang = models.CharField (default="en", max_length=12)
 
     tags = models.TextField (blank=True, null=True) # Format: tag1,tag2,tag3
     category = models.DecimalField (max_digits=10, decimal_places=0, default=0) # Category id
