@@ -9,6 +9,11 @@
 	    <router-link to="/signup">Signup</router-link>
 	</li>
     </ul>
+    <ul v-else>
+	<li>
+	    <router-link to="/my/blogs">My Blogs</router-link>
+	</li>
+    </ul>
 </template>
 
 <script>

@@ -124,6 +124,7 @@ AUTH_USER_MODEL = "api.User"
 
 # File management
 MEDIA_ROOT = os.path.join (BASE_DIR, "data/")
+MEDIA_URL = "/media/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

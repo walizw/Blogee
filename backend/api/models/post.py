@@ -9,6 +9,7 @@ class Post (models.Model):
     content = models.TextField ()
 
     # Optional fields
+    slug = models.CharField (max_length=256, blank=True, null=True)
     date = models.DateTimeField (default=timezone.now)
     thumbnail = models.FileField (upload_to="thumbs/", blank=True, null=True)
     lang = models.CharField (default="en", max_length=12)

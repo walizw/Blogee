@@ -1,8 +1,8 @@
 from rest_framework import generics
 from django.contrib.auth.hashers import make_password
 
-from ..models import User
-from ..serializers import PrivateUserSerializer, UserSerializer
+from ..models import User, Blog
+from ..serializers import PrivateUserSerializer, UserSerializer, BlogSerializer
 
 class UserCreateAPIView (generics.CreateAPIView):
     queryset = User.objects.all ()
@@ -21,3 +21,16 @@ class UserCreateAPIView (generics.CreateAPIView):
 class UsersAPIView (generics.ListAPIView):
     queryset = User.objects.all ()
     serializer_class = UserSerializer
+
+class UserGetFromNameAPIView (generics.RetrieveAPIView):
+    queryset = User.objects.all ()
+    serializer_class = UserSerializer
+    lookup_field = "name"
+
+class UserBlogsAPIView (generics.ListAPIView):
+    serializer_class = BlogSerializer
+    lookup_url_kwarg = "pk"
+
+    def get_queryset (self):
+        pk = self.kwargs.get (self.lookup_url_kwarg)
+        return Blog.objects.filter (author=pk).order_by ("-creation_date")
