@@ -8,6 +8,7 @@ import CreateBlog from "../views/my/CreateBlog.vue"
 import EditBlog from "../views/my/EditBlog.vue"
 import DeleteBlog from "../views/my/DeleteBlog.vue"
 import CreateCategory from "../views/my/CreateCategory.vue"
+import EditCategory from "../views/my/EditCategory.vue"
 
 import auth from "../logic/auth"
 
@@ -53,6 +54,11 @@ const router = createRouter({
 	    path: "/my/blogs/:id/cat_create",
 	    name: "Create Category",
 	    component: CreateCategory
+	},
+	{
+	    path: "/my/category/:id/edit",
+	    name: "Edit Category",
+	    component: EditCategory
 	}
     ],
 });

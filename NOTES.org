@@ -16,3 +16,8 @@ categories whose =parent_id= is the same of technology's id, will be returned.
 
 The language of a category/post will be obtained through the blog model at
 perform_create.
+
+* Posts
+
+When adding a post to the database, check if its id and blog are owned by the
+loggedin user, if not, the post should not be added.

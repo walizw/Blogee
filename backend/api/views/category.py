@@ -22,3 +22,29 @@ class CategoryCreateAPIView (generics.CreateAPIView):
 
         serializer.save (lang=blog_instance.lang)
         
+class CategoryAPIView (generics.RetrieveAPIView):
+    queryset = Category.objects.all ()
+    serializer_class = CategorySerializer
+    lookup_field = "pk"
+
+class CategoryUpdateAPIView (generics.UpdateAPIView):
+    queryset = Category.objects.all ()
+    serializer_class = CategorySerializer
+    lookup_field = "pk"
+
+    def update (self, request, *args, **kwargs):
+        user_id = request.user.id
+        instance = self.get_object ()
+        blog_instance = Blog.objects.all ().filter (id=instance.blog).get ()
+        serializer = self.get_serializer (instance, data=request.data)
+
+        response = Response ()
+
+        if not serializer.is_valid () or not user_id == blog_instance.author:
+            response.content = {"message": "There's been an error updating the blog"}
+            response.status_code = 401
+            return response
+
+        serializer.save ()
+        response.content = {"message": "Blog updated successfully"}
+        return response

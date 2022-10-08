@@ -17,4 +17,6 @@ urlpatterns = [
     path ("blog/<int:pk>/delete/", views.BlogDeleteAPIView.as_view ()),
     path ("blog/create/", views.BlogCreateAPIView.as_view ()),
     path ("category/create/", views.CategoryCreateAPIView.as_view ()),
+    path ("category/<int:pk>/", views.CategoryAPIView.as_view ()),
+    path ("category/<int:pk>/update/", views.CategoryUpdateAPIView.as_view ()),
 ]

@@ -1,17 +1,16 @@
 <template>
-    <h1>Create category</h1>
-
+    <h1>Edit Category</h1>
     <form @submit="submit">
 	<div>
 	    <label>Name: </label>
-	    <input type="text" placeholder="Name" v-model="name" required />
+	    <input type="text" placeholder="Name" v-model="name" />
 	</div>
 
 	<div>
 	    <label>Topic: </label>
-	    <select v-model="parent" required>
+	    <select v-model="topic">
 		<option :key="cat.id" v-for="cat in categories"
-			:value="cat.id">
+					     :value="cat.id">
 		    {{cat.name}}
 		</option>
 	    </select>
@@ -19,31 +18,31 @@
 
 	<div>
 	    <label>About: </label>
-	    <textarea cols="30" rows="10" v-model="about"></textarea>
+	    <textarea cols="30" v-model="about" rows="10"></textarea>
 	</div>
 
 	<div>
 	    <label>Icon: </label>
-	    <input type="file" @change="changed_file" ref="icon" required />
+	    <input type="file" @change="changed_file" ref="icon" />
 	</div>
 
-	<input type="submit" value="Create!"/>
+	<input type="submit" value="Update!"/>
     </form>
     <p v-if="error">{{error}}</p>
 </template>
 
 <script>
- import blogs from "../../logic/blogs"
+ import category from "../../logic/category"
  import config from "../../logic/config"
 
  export default {
-     name: "CategoryCreate",
+     name: "EditCategory",
      data () {
 	 return {
 	     name: "",
-	     parent: -1,
+	     topic: -1,
 	     about: "",
-	     icon_img: "",
+	     icon: "",
 	     error: ""
 	 }
      },
@@ -54,21 +53,23 @@
      },
      methods: {
 	 changed_file () {
-	     this.icon_img = this.$refs.icon.files [0]
+	     this.icon = this.$refs.icon.files [0]
 	 },
 	 async submit (e) {
 	     e.preventDefault ()
 
-	     let blog_id = this.$route.params.id
-
 	     let form_data = new FormData ()
 	     form_data.append ("name", this.name)
-	     form_data.append ("blog", blog_id)
-	     form_data.append ("parent_id", this.parent)
+	     form_data.append ("topic", this.topic)
 	     form_data.append ("about", this.about)
-	     form_data.append ("icon", this.icon_img)
 
-	     let response = await blogs.create_blog_category (blog_id, form_data)
+	     if (this.icon)
+		 form_data.append ("icon", this.icon)
+
+	     let response = await category.category_update (
+		 this.$route.params.id,
+		 form_data
+	     )
 
 	     if (response) {
 		 if (response.success)
@@ -77,6 +78,18 @@
 		 this.error = response.error
 	     }
 	 }
+     },
+     async created () {
+	 let response = await category.category_get_info (this.$route.params.id)
+
+	 if (response.error)
+	 {
+	     this.error = response.error
+	 }
+
+	 this.name = response.name
+	 this.topic = response.parent_id
+	 this.about = response.about
      }
  }
 </script>

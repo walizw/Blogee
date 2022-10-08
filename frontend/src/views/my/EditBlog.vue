@@ -19,14 +19,10 @@
 	<div>
 	    <label>Language: </label>
 	    <select v-model="language" required>
-		<option value="en">English</option>
-		<option value="es">Spanish</option>
-		<option value="fr">French</option>
-		<option value="it">Italian</option>
-		<option value="jp">Japanese</option>
-		<option value="kr">Korean</option>
-		<option value="zh">Chinese</option>
-		<option value="de">Deutsch</option>
+		<option :key="lang.id" v-for="lang in languages"
+			:value="lang.code">
+		    {{lang.name}}
+		</option>
 	    </select>
 	</div>
 
@@ -38,6 +34,7 @@
 
 <script>
  import blogs from "../../logic/blogs"
+ import config from "../../logic/config"
 
  export default {
      name: "EditBlog",
@@ -49,6 +46,11 @@
 	     language: "",
 	     error: "",
 	     success: false
+	 }
+     },
+     computed: {
+	 languages () {
+	     return config.LANGUAGES
 	 }
      },
      async created () {
