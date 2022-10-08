@@ -15,6 +15,11 @@
 	</div>
 
 	<div>
+	    <label>Icon: </label>
+	    <input type="file" ref="icon" @change="changed_file" />
+	</div>
+
+	<div>
 	    <label>Header Image: </label>
 	    <input type="file" ref="header_img" @change="changed_file" />
 	</div>
@@ -47,6 +52,7 @@
 	 return {
 	     name: "",
 	     about: "",
+	     icon_img: "",
 	     header_img: "",
 	     language: "",
 	     error: ""
@@ -54,7 +60,11 @@
      },
      methods: {
 	 changed_file () {
-	     this.header_img = this.$refs.header_img.files [0]
+	     if (this.$refs.header_img.files)
+		 this.header_img = this.$refs.header_img.files [0]
+
+	     if (this.$refs.icon.files)
+		 this.icon_img = this.$refs.icon.files [0]
 	 },
 	 async submit (e) {
 	     e.preventDefault ()
@@ -62,6 +72,7 @@
 	     let form_data = new FormData ()
 	     form_data.append ("name", this.name)
 	     form_data.append ("about", this.about)
+	     form_data.append ("icon", this.icon_img)
 	     form_data.append ("header_img", this.header_img)
 	     form_data.append ("lang", this.language)
 	     

@@ -1,4 +1,4 @@
-from ..models import Blog, Category, Post
+from ..models import Blog, Category, Post, User
 from ..serializers import BlogSerializer, CategorySerializer
 
 from django.template.defaultfilters import slugify
@@ -25,6 +25,10 @@ class BlogCreateAPIView (generics.CreateAPIView):
         blog_name = serializer.validated_data.get ("name")
         slugified_name = slugify (blog_name)
         serializer.save (author=self.request.user.id, slug=slugified_name)
+
+        user = User.objects.all ().filter (id=self.request.user.id).get ()
+        user.blogs += 1
+        user.save ()
 
 class BlogUpdateAPIView (generics.UpdateAPIView):
     queryset = Blog.objects.all ()
@@ -86,6 +90,10 @@ class BlogDeleteAPIView (generics.DestroyAPIView):
         posts = Post.objects.all ().filter (blog=instance.id)
         for post in posts:
             post.delete ()
+
+        user = User.objects.all ().filter (id=user_id).get ()
+        user.blogs -= 1
+        user.save ()
 
         instance.delete ()
         response.content = {"message": "Blog deleted successfully"}

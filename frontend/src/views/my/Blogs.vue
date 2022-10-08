@@ -27,7 +27,9 @@
 	    </p>
 	    <ul v-else>
 		<li :key="cat.id" v-for="cat in blog.categories">
-		    {{cat.name}}
+		    {{cat.name}} --
+		    <router-link :to="`/my/category/${cat.id}/edit`">Edit</router-link> --
+		    <router-link :to="`/my/category/${cat.id}/delete`">Delete</router-link>
 		</li>
 	    </ul>
 	</div>
