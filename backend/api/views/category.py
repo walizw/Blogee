@@ -8,6 +8,7 @@ from rest_framework.response import Response
 class CategoryCreateAPIView (generics.CreateAPIView):
     queryset = Category.objects.all ()
     serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
 
     def perform_create (self, serializer):
         user_id = self.request.user.id
@@ -30,6 +31,7 @@ class CategoryAPIView (generics.RetrieveAPIView):
 class CategoryUpdateAPIView (generics.UpdateAPIView):
     queryset = Category.objects.all ()
     serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
     lookup_field = "pk"
 
     def update (self, request, *args, **kwargs):
@@ -47,4 +49,28 @@ class CategoryUpdateAPIView (generics.UpdateAPIView):
 
         serializer.save ()
         response.content = {"message": "Blog updated successfully"}
+        return response
+
+class CategoryDeleteAPIView (generics.DestroyAPIView):
+    queryset = Category.objects.all ()
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = "pk"
+
+    def destroy (self, request, *args, **kwargs):
+        user_id = request.user.id # The user id that made the request
+        instance = self.get_object ()
+        blog_instance = Blog.objects.all ().filter (id=instance.blog).get ()
+
+        response = Response ()
+
+        if not user_id == blog_instance.author:
+            response.content = {"message": "There's been an error deleting the category"}
+            response.status_code = 401
+            return response
+
+        # Delete the category
+        instance.delete ()
+
+        response.content = {"message": "Category deleted successfully"}
         return response

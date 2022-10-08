@@ -9,6 +9,7 @@ import EditBlog from "../views/my/EditBlog.vue"
 import DeleteBlog from "../views/my/DeleteBlog.vue"
 import CreateCategory from "../views/my/CreateCategory.vue"
 import EditCategory from "../views/my/EditCategory.vue"
+import DeleteCategory from "../views/my/DeleteCategory.vue"
 
 import auth from "../logic/auth"
 
@@ -59,6 +60,11 @@ const router = createRouter({
 	    path: "/my/category/:id/edit",
 	    name: "Edit Category",
 	    component: EditCategory
+	},
+	{
+	    path: "/my/category/:id/delete",
+	    name: "Delete Category",
+	    component: DeleteCategory
 	}
     ],
 });

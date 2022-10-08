@@ -33,6 +33,7 @@ class BlogCreateAPIView (generics.CreateAPIView):
 class BlogUpdateAPIView (generics.UpdateAPIView):
     queryset = Blog.objects.all ()
     serializer_class = BlogSerializer
+    permission_classes = [IsAuthenticated]
     lookup_field = "pk"
 
     def update (self, request, *args, **kwargs):
@@ -68,16 +69,16 @@ class BlogUpdateAPIView (generics.UpdateAPIView):
 class BlogDeleteAPIView (generics.DestroyAPIView):
     queryset = Blog.objects.all ()
     serializer_class = BlogSerializer
+    permission_classes = [IsAuthenticated]
     lookup_field = "pk"
 
-    def destory (self, request, *args, **kwargs):
+    def destroy (self, request, *args, **kwargs):
         user_id = request.user.id # The user id that made the request
         instance = self.get_object ()
-        serializer = self.get_serializer (instance, data=request.data)
 
         response = Response ()
         
-        if not serializer.is_valid () or not user_id == instance.author:
+        if not user_id == instance.author:
             response.content = {"message": "There's been an error deleting the blog"}
             response.status_code = 401
             return response

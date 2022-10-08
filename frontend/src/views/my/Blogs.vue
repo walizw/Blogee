@@ -15,7 +15,8 @@
 	    <p>
 		{{blog.name}} --
 		<router-link :to="`/my/blogs/${blog.id}/edit`">Edit</router-link> --
-		<router-link :to="`/my/blogs/${blog.id}/delete`">Delete</router-link>
+		<router-link :to="`/my/blogs/${blog.id}/delete`">Delete</router-link> --
+		<router-link :to="`/my/blogs/${blog.id}/new_post`">New Post</router-link>
 	    </p>
 	    <p>
 		Categories: --

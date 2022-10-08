@@ -29,5 +29,21 @@ export default {
 	} catch (e) {
 	    return {"error": e}
 	}
+    },
+    async delete_category (id) {
+	try {
+	    let response = await axios.delete (
+		config.ENDPOINT + `category/${id}/delete/`,
+		{
+		    headers: {
+			"Authorization": `Bearer ${auth.get_user_access ()}`
+		    }
+		}
+	    )
+
+	    return {"success": 1}
+	} catch (e) {
+	    return {"error": e}
+	}
     }
 }

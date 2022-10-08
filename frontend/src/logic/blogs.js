@@ -75,7 +75,13 @@ export default {
     },
     async delete_blog (id) {
 	try {
-	    let response = await axios.delete (config.ENDPOINT + `blog/${id}/delete/`)
+	    let response = await axios.delete (
+		config.ENDPOINT + `blog/${id}/delete/`,
+		{
+		    headers: {
+			"Authorization": `Bearer ${auth.get_user_access ()}`
+		    }
+		})
 
 	    return {"success": 1}
 	} catch (e) {
