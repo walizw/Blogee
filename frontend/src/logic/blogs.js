@@ -37,7 +37,7 @@ export default {
     },
     async get_blog_categories (id) {
 	try {
-	    let response = await axios.get (config.ENDPOINT + `blog/${id}/categories`)
+	    let response = await axios.get (config.ENDPOINT + `blog/${id}/categories/`)
 	    return response.data
 	} catch (e) {
 	    return {"error": e}
@@ -87,5 +87,13 @@ export default {
 	} catch (e) {
 	    return {"error": e}
 	}
-    }
+    },
+    async get_blog_posts (id) {
+	try {
+	    let response = await axios.get (config.ENDPOINT + `blog/${id}/posts/`)
+	    return response.data
+	} catch (e) {
+	    return {"error": e}
+	}
+    },
 }

@@ -18,19 +18,31 @@
 		<router-link :to="`/my/blogs/${blog.id}/delete`">Delete</router-link> --
 		<router-link :to="`/my/blogs/${blog.id}/new_post`">New Post</router-link>
 	    </p>
+
 	    <p>
 		Categories: --
 		<router-link :to="`/my/blogs/${blog.id}/cat_create`">Create</router-link>
 	    </p>
 	    <p v-if="blog.categories && blog.categories.length === 0">
-		This blog has no categories, you can create some or use the
-		default ones.
+		This blog has no categories, create some
 	    </p>
 	    <ul v-else>
 		<li :key="cat.id" v-for="cat in blog.categories">
 		    {{cat.name}} --
 		    <router-link :to="`/my/category/${cat.id}/edit`">Edit</router-link> --
 		    <router-link :to="`/my/category/${cat.id}/delete`">Delete</router-link>
+		</li>
+	    </ul>
+
+	    <p>
+		Posts:
+	    </p>
+	    <p v-if="blog.posts && blog.posts.length === 0">
+		This blog has no posts
+	    </p>
+	    <ul v-else>
+		<li :key="post.id" v-for="post in blog.posts">
+		    {{post.name}} --
 		</li>
 	    </ul>
 	</div>
@@ -52,8 +64,13 @@
 	 this.blogs = await blogs.get_user_blogs (auth.get_user_id ())
 
 	 for (let i = 0; i < this.blogs.length; i++) {
-	     let categories = await blogs.get_blog_categories (this.blogs[i].id)
+	     let categories = await blogs.get_blog_categories (this.blogs [i].id)
 	     this.blogs [i].categories = categories
+	 }
+
+	 for (let i = 0; i < this.blogs.length; i++) {
+	     let posts = await blogs.get_blog_posts (this.blogs [i].id)
+	     this.blogs [i].posts = posts
 	 }
      }
  }

@@ -1,5 +1,5 @@
 from ..models import Blog, Category, Post, User
-from ..serializers import BlogSerializer, CategorySerializer
+from ..serializers import BlogSerializer, CategorySerializer, PostSerializer
 
 from django.template.defaultfilters import slugify
 
@@ -107,4 +107,13 @@ class BlogCategoriesAPIView (generics.ListAPIView):
     def get_queryset (self):
         blog_id = self.kwargs.get (self.lookup_url_kwarg)
         queryset = Category.objects.all ().filter (blog=blog_id)
+        return queryset
+
+class BlogPostsAPIView (generics.ListAPIView):
+    serializer_class = PostSerializer
+    lookup_url_kwarg = "pk"
+
+    def get_queryset (self):
+        blog_id = self.kwargs.get (self.lookup_url_kwarg)
+        queryset = Post.objects.all ().filter (blog=blog_id)
         return queryset
