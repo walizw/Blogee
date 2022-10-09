@@ -20,6 +20,12 @@ export default {
     get_user_refresh () {
 	return cookies.get ("refresh")
     },
+    logout () {
+	if (!this.is_user_loggedin)
+	    return
+	cookies.remove ("access")
+	cookies.remove ("refresh")
+    },
     async login_user (username, password) {
 	try {
 	    let response = await axios.post (config.ENDPOINT + "users/login/", {

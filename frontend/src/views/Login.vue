@@ -35,7 +35,7 @@
 	     if (response)
 	     {
 		 if (response.success)
-		     this.$router.push ("/")
+		     this.$router.go ("/")
 		 
 		 if (response.error)
 		     this.error = response.error

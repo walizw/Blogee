@@ -12,6 +12,8 @@ import EditCategory from "../views/my/EditCategory.vue"
 import DeleteCategory from "../views/my/DeleteCategory.vue"
 import NewPost from "../views/my/NewPost.vue"
 
+import Logout from "../views/my/Logout.vue"
+
 import auth from "../logic/auth"
 
 const router = createRouter({
@@ -72,6 +74,12 @@ const router = createRouter({
 	    name: "New post",
 	    component: NewPost
 	},
+	
+	{
+	    path: "/my/logout",
+	    name: "Logout",
+	    component: Logout
+	}
     ],
 });
 
