@@ -21,5 +21,13 @@
     "signup_error_msg": "There's been an error creating your Blogee account, please check the passwords match, and you've entered all the fields. If everything fails again, try again later D:",
     "Email": "Email",
     "Password": "Password",
-    "Repeat your password": "Repeat your password"
+    "Repeat your password": "Repeat your password",
+    "Settings": "Settings",
+    "my_settings_subtitle": "Edit your account details.",
+    "Analytics": "Analytics",
+    "my_analytics_subtitle": "Check the engagement of your content.",
+    "My Blogs": "My Blogs",
+    "my_blogs_subtitle": "Create, Delete or Update your blogs.",
+    "My Books": "My Books",
+    "my_books_subtitle": "Create, Delete or Update your books."
 }

@@ -4,7 +4,7 @@
 	    <div class="row">
 		<div class="col-lg-12 text-center">
 		    <h1 class="section-title h2 mb-3">
-			<span>{{$route.name}}</span>
+			<span>{{$t ($route.name)}}</span>
 		    </h1>
 		</div>
 	    </div>
