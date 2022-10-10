@@ -10,5 +10,16 @@
     "Dashboard": "Dashboard",
     "Logout": "Logout",
     "Login": "Login",
-    "Sign Up": "Sign Up"
+    "Sign Up": "Sign Up",
+    "footer msg": "Thanks for making Blogee alive :D",
+    "Login to your Blogee Account": "Login to your Blogee Account",
+    "Username": "Username",
+    "Password": "Password",
+    "There's been an error": "There's been an error",
+    "login_error_msg": "There's been an error logging in to your account, please check the credentials are right and all the fields are filled.",
+    "Create an account in Blogee": "Create an account in Blogee",
+    "signup_error_msg": "There's been an error creating your Blogee account, please check the passwords match, and you've entered all the fields. If everything fails again, try again later D:",
+    "Email": "Email",
+    "Password": "Password",
+    "Repeat your password": "Repeat your password"
 }

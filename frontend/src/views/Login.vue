@@ -1,24 +1,56 @@
 <template>
-    <h1>Log Into your Blogee account!</h1>
-    <form @submit="submit">
-	<div>
-	    <label>Username: </label>
-	    <input v-model="username" type="text" placeholder="Username"/>
+    <PageHeader />
+
+    <section>
+	<div class="container">
+            <div class="row justify-content-center">
+
+		<div class="col-lg-10">
+		    <div class="content">
+			<h3>{{$t ("Login to your Blogee Account")}}</h3>
+
+			<div class="alert alert-danger" role="alert"
+			     v-if="error">
+			    <h4 class="alert-heading">
+				{{$t ("There's been an error")}}
+			    </h4>
+			    <p>{{$t ("login_error_msg")}}</p>
+			</div>
+
+			<form @submit="submit">
+			    <div class="mb-3">
+				<label for="username">{{$t ("Username")}}:</label>
+				<input v-model="username" type="text"
+				       class="form-control" />
+			    </div>
+			    <div class="mb-3">
+				<label for="password">{{$t ("Password")}}:</label>
+				<input v-model="password" type="password"
+						class="form-control" />
+			    </div>
+
+			    <button type="submit" class="btn btn-primary">
+				{{$t ("Login")}}
+			    </button>
+			</form>
+		    </div>
+		</div>
+		
+	    </div>
 	</div>
-	<div>
-	    <label>Password: </label>
-	    <input v-model="password" type="password" placeholder="Password" />
-	</div>
-	<input type="submit" value="Log In!"/>
-    </form>
-    <p v-if="error">{{error}}</p>
+    </section>
 </template>
 
 <script>
  import auth from "../logic/auth"
 
+ import PageHeader from "@/components/utils/PageHeader.vue"
+
  export default {
      name: "Login",
+     components: {
+	 PageHeader
+     },
      data () {
 	 return {
 	     username: "",

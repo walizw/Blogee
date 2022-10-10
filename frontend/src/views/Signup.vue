@@ -1,32 +1,66 @@
 <template>
-    <h1>Signup</h1>
-    <form @submit="submit">
-	<div>
-	    <label>Username: </label>
-	    <input type="text" placeholder="Username" v-model="username" />
+    <PageHeader />
+
+    <section>
+	<div class="container">
+            <div class="row justify-content-center">
+		<div class="col-lg-10">
+		    <div class="content">
+			<h3>{{$t ("Create an account in Blogee")}}</h3>
+
+			<div class="alert alert-danger" role="alert"
+			     v-if="error">
+			    <h4 class="alert-heading">
+				{{$t ("There's been an error")}}
+			    </h4>
+			    <p>{{$t ("signup_error_msg")}}</p>
+			</div>
+
+			<form @submit="submit">
+			    <div class="mb-3">
+				<label for="username">{{$t ("Username")}}:</label>
+				<input v-model="username" type="text" class="form-control" />
+			    </div>
+			    <div class="mb-3">
+				<label for="email">{{$t ("Email")}}:</label>
+				<input v-model="email" type="email" class="form-control" />
+			    </div>
+			    <div class="row">
+				<div class="col">
+				    <div class="mb-3">
+					<label for="password">{{$t ("Password")}}:</label>
+					<input v-model="password1" type="password" class="form-control" />
+				    </div>
+				</div>
+				<div class="col">
+				    <div class="mb-3">
+					<label for="password1">{{$t ("Repeat your password")}}:</label>
+					<input v-model="password2" type="password" class="form-control" />
+				    </div>
+				</div>
+			    </div>
+
+			    <button class="btn btn-primary" type="submit">
+				{{$t ("Signup")}}
+			    </button>
+			</form>
+		    </div>
+		</div>
+            </div>
 	</div>
-	<div>
-	    <label>Email: </label>
-	    <input type="email" v-model="email" placeholder="Email address" />
-	</div>
-	<div>
-	    <label>Password: </label>
-	    <input type="password" v-model="password1" placeholder="Password" />
-	</div>
-	<div>
-	    <label>Repeat Your Password: </label>
-	    <input type="password" v-model="password2" placeholder="Repeat your password" />
-	</div>
-	<input type="Submit" value="Sign Up!"/>
-    </form>
-    <p v-if="error">{{error}}</p>
+    </section>
 </template>
 
 <script>
  import auth from "../logic/auth"
 
+ import PageHeader from "../components/utils/PageHeader.vue"
+
  export default {
      name: "Signup",
+     components: {
+	 PageHeader
+     },
      data () {
 	 return {
 	     username: "",

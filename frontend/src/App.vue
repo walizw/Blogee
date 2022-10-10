@@ -1,6 +1,7 @@
 <template>
     <Header />
     <RouterView :user_id="user_id" />
+    <Footer />
 </template>
 
 <script>
@@ -8,11 +9,13 @@
  import { useCookies } from "vue3-cookies"
 
  import Header from "./components/Header.vue"
+ import Footer from "./components/Footer.vue"
 
  export default {
      name: "App",
      components: {
-	 Header
+	 Header,
+	 Footer
      },
      data () {
 	 return {

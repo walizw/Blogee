@@ -1,6 +1,7 @@
 <template>
     <ul class="navbar-nav mx-auto">
-	<li class="nav-item" :key="elm.id" v-for="elm in menu">
+	<li :class="`nav-item` + ($route.path == elm.url ? ' active' : '')"
+	    :key="elm.id" v-for="elm in menu">
 	    <router-link class="nav-link" :to="elm.url"
 			 v-if="!('requiresAuth' in elm) || 'requiresAuth' in elm && elm.requiresAuth && loggedin || 'requiresAuth' in elm && !elm.requiresAuth && !loggedin">
 		{{elm.name}}
