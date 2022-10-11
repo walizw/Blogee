@@ -28,6 +28,9 @@
 
 	<input type="submit" value="Update!"/>
     </form>
+    <router-link :to="`/my/category/${cat_id}/delete`">
+	Delete
+    </router-link>
     <p v-if="error">{{error}}</p>
 </template>
 
@@ -49,6 +52,9 @@
      computed: {
 	 categories () {
 	     return config.CATEGORIES
+	 },
+	 cat_id () {
+	     return this.$route.params.id
 	 }
      },
      methods: {

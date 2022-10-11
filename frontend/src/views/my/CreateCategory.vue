@@ -72,7 +72,7 @@
 
 	     if (response) {
 		 if (response.success)
-		     this.$router.push ("/my/blogs")
+		     this.$router.push ("/my/blog/" + blog_id)
 
 		 this.error = response.error
 	     }

@@ -1,50 +1,14 @@
 <template>
-    <h1>My Blogs</h1>
-    <ul>
-	<li>
-	    <router-link to="/my/blogs/create">
-		Create Blog
-	    </router-link>
-	</li>
-    </ul>
-    <div v-if="blogs.length === 0">
-	You have no blogs! Create one :D
-    </div>
-    <div v-else>
-	<div :key="blog.id" v-for="blog in blogs">
-	    <p>
-		{{blog.name}} --
-		<router-link :to="`/my/blogs/${blog.id}/edit`">Edit</router-link> --
-		<router-link :to="`/my/blogs/${blog.id}/delete`">Delete</router-link> --
-		<router-link :to="`/my/blogs/${blog.id}/new_post`">New Post</router-link>
-	    </p>
-
-	    <p>
-		Categories: --
-		<router-link :to="`/my/blogs/${blog.id}/cat_create`">Create</router-link>
-	    </p>
-	    <p v-if="blog.categories && blog.categories.length === 0">
-		This blog has no categories, create some
-	    </p>
-	    <ul v-else>
-		<li :key="cat.id" v-for="cat in blog.categories">
-		    {{cat.name}} --
-		    <router-link :to="`/my/category/${cat.id}/edit`">Edit</router-link> --
-		    <router-link :to="`/my/category/${cat.id}/delete`">Delete</router-link>
-		</li>
-	    </ul>
-
-	    <p>
-		Posts:
-	    </p>
-	    <p v-if="blog.posts && blog.posts.length === 0">
-		This blog has no posts
-	    </p>
-	    <ul v-else>
-		<li :key="post.id" v-for="post in blog.posts">
-		    {{post.name}} --
-		</li>
-	    </ul>
+    <PageHeader />
+    <div class="container">
+	<div class="row g-4 justify-content-center text-center mb-4">
+	    <h3>Blogs</h3>
+	    <CategoryBox size="4" link="/my/blogs/create"
+			 icon="ti-new-section" title="Create Blog"
+			 subtitle="create_blog_subtitle" />
+	    <CategoryBox size="4" :key="blog.id" v-for="blog in blogs"
+			 :link="`/my/blog/${blog.id}`" :title="blog.name"
+			 icon="ti-tools" subtitle="Edit Blog" />
 	</div>
     </div>
 </template>
@@ -53,8 +17,15 @@
  import auth from "../../logic/auth"
  import blogs from "../../logic/blogs"
 
+ import PageHeader from "@/components/utils/PageHeader.vue"
+ import CategoryBox from "@/components/utils/CategoryBox.vue"
+
  export default {
      name: "Blogs",
+     components: {
+	 PageHeader,
+	 CategoryBox
+     },
      data () {
 	 return {
 	     blogs: []
@@ -62,16 +33,6 @@
      },
      async created () {
 	 this.blogs = await blogs.get_user_blogs (auth.get_user_id ())
-
-	 for (let i = 0; i < this.blogs.length; i++) {
-	     let categories = await blogs.get_blog_categories (this.blogs [i].id)
-	     this.blogs [i].categories = categories
-	 }
-
-	 for (let i = 0; i < this.blogs.length; i++) {
-	     let posts = await blogs.get_blog_posts (this.blogs [i].id)
-	     this.blogs [i].posts = posts
-	 }
      }
  }
 </script>

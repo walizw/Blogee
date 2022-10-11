@@ -6,6 +6,7 @@ import SignupView from "../views/Signup.vue"
 import DashboardView from "../views/Dashboard.vue"
 import MyBlogsView from "../views/my/Blogs.vue"
 import CreateBlog from "../views/my/CreateBlog.vue"
+import MyBlogView from "../views/my/Blog.vue"
 import EditBlog from "../views/my/EditBlog.vue"
 import DeleteBlog from "../views/my/DeleteBlog.vue"
 import CreateCategory from "../views/my/CreateCategory.vue"
@@ -44,6 +45,11 @@ const router = createRouter({
 	    path: "/my/blogs",
 	    name: "My Blogs",
 	    component: MyBlogsView
+	},
+	{
+	    path: "/my/blog/:id",
+	    name: "My Blog",
+	    component: MyBlogView
 	},
 	{
 	    path: "/my/blogs/create",

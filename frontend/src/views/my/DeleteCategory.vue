@@ -17,6 +17,7 @@
 
 	 if (response) {
 	     if (response.success)
+		 // TODO: Go to this category's blog page
 		 this.$router.push ("/my/blogs")
 
 	     this.error = response.error
