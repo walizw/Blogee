@@ -1,42 +1,119 @@
 <template>
-    <h1>Edit Category</h1>
-    <form @submit="submit">
-	<div>
-	    <label>Name: </label>
-	    <input type="text" placeholder="Name" v-model="name" />
-	</div>
+    <PageHeader />
 
-	<div>
-	    <label>Topic: </label>
-	    <select v-model="topic">
-		<option :key="cat.id" v-for="cat in categories"
-					     :value="cat.id">
-		    {{cat.name}}
-		</option>
-	    </select>
-	</div>
+    <section>
+	<div class="container">
+            <div class="row justify-content-center">
+		<div class="col-lg-10">
+                    <div class="content">
 
-	<div>
-	    <label>About: </label>
-	    <textarea cols="30" v-model="about" rows="10"></textarea>
-	</div>
+			<div class="alert alert-danger" role="alert"
+			     v-if="error">
+			    <h4 class="alert-heading">
+				{{$t ("There's been an error")}}
+			    </h4>
+			    <p>{{$t ("edit_cat_error_msg")}}</p>
+			</div>
 
-	<div>
-	    <label>Icon: </label>
-	    <input type="file" @change="changed_file" ref="icon" />
-	</div>
+			<form @submit="submit">
+			    <div class="mb-3">
+				<label>{{$t ("Name")}}: </label>
+				<input v-model="name" type="text"
+				       class="form-control" />
+			    </div>
+			    
+			    <div class="mb-3">
+				<label>{{$t ("About Category")}}:</label>
+				<textarea cols="30" rows="10" v-model="about"
+					  class="form-control"></textarea>
+			    </div>
+			    
+			    <div class="mb-3">
+				<label>{{$t ("Topic")}}:</label>
+				<select v-model="topic" class="form-control">
+				    <option :key="cat.id" :value="cat.id"
+					    v-for="cat in categories">
+					{{$t (cat.name)}}
+				    </option>
+				</select>
+			    </div>
+			    
+			    <div class="mb-3">
+				<label>{{$t ("Icon Image")}}:</label>
+				<input type="file" ref="icon"
+				       class="form-control"
+				       @change="changed_file" />
+			    </div>
 
-	<input type="submit" value="Update!"/>
-    </form>
-    <router-link :to="`/my/category/${cat_id}/delete`">
-	Delete
-    </router-link>
-    <p v-if="error">{{error}}</p>
+			    <!-- <div class="mb-3">
+				 <button type="submit" class="btn btn-primary">
+				 {{$t ("Edit Category")}}
+				 </button>
+
+				 <router-link class="btn btn-primary d-inline-block"
+				 :to="`/my/category/${cat_id}/delete`">
+				 {{$t ("Delete Category")}}
+				 </router-link>
+				 </div> -->
+
+			    <div class="clearfix">
+				<button type="submit" class="btn btn-primary float-start">
+				    {{$t ("Edit Category")}}
+				</button>
+
+				<router-link class="btn btn-danger float-end"
+					     :to="`/my/category/${cat_id}/delete`"
+					     role="button">
+				    {{$t ("Delete Category")}}
+				</router-link>
+			    </div>
+			</form>
+			
+		    </div>
+		</div>
+            </div>
+	</div>
+    </section>
+    <!-- <h1>Edit Category</h1>
+	 <form @submit="submit">
+	 <div>
+	 <label>Name: </label>
+	 <input type="text" placeholder="Name" v-model="name" />
+	 </div>
+
+	 <div>
+	 <label>Topic: </label>
+	 <select v-model="topic">
+	 <option :key="cat.id" v-for="cat in categories"
+	 :value="cat.id">
+	 {{cat.name}}
+	 </option>
+	 </select>
+	 </div>
+
+	 <div>
+	 <label>About: </label>
+	 <textarea cols="30" v-model="about" rows="10"></textarea>
+	 </div>
+
+	 <div>
+	 <label>Icon: </label>
+	 <input type="file" @change="changed_file" ref="icon" />
+	 </div>
+
+	 <input type="submit" value="Update!"/>
+	 </form>
+	 <router-link :to="`/my/category/${cat_id}/delete`">
+	 Delete
+	 </router-link>
+	 <p v-if="error">{{error}}</p> -->
 </template>
 
 <script>
  import category from "../../logic/category"
  import config from "../../logic/config"
+
+ import PageHeader from "@/components/utils/PageHeader.vue"
 
  export default {
      name: "EditCategory",
@@ -48,6 +125,9 @@
 	     icon: "",
 	     error: ""
 	 }
+     },
+     components: {
+	 PageHeader
      },
      computed: {
 	 categories () {
