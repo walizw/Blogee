@@ -74,39 +74,6 @@
             </div>
 	</div>
     </section>
-    <!-- <h1>Edit Category</h1>
-	 <form @submit="submit">
-	 <div>
-	 <label>Name: </label>
-	 <input type="text" placeholder="Name" v-model="name" />
-	 </div>
-
-	 <div>
-	 <label>Topic: </label>
-	 <select v-model="topic">
-	 <option :key="cat.id" v-for="cat in categories"
-	 :value="cat.id">
-	 {{cat.name}}
-	 </option>
-	 </select>
-	 </div>
-
-	 <div>
-	 <label>About: </label>
-	 <textarea cols="30" v-model="about" rows="10"></textarea>
-	 </div>
-
-	 <div>
-	 <label>Icon: </label>
-	 <input type="file" @change="changed_file" ref="icon" />
-	 </div>
-
-	 <input type="submit" value="Update!"/>
-	 </form>
-	 <router-link :to="`/my/category/${cat_id}/delete`">
-	 Delete
-	 </router-link>
-	 <p v-if="error">{{error}}</p> -->
 </template>
 
 <script>
