@@ -27,6 +27,7 @@
     "Analytics": "Analytics",
     "my_analytics_subtitle": "Check the engagement of your content.",
     "My Blogs": "My Blogs",
+    "My Blog": "My Blog",
     "my_blogs_subtitle": "Create, Delete or Update your blogs.",
     "My Books": "My Books",
     "my_books_subtitle": "Create, Delete or Update your books.",
@@ -51,6 +52,7 @@
     "create_cat_subtitle": "Create a new category.",
     "category_edit_subtitle": "Edit this category.",
     "Posts": "Posts",
+    "New post": "New Post",
     "New Post": "New Post",
     "edit_blog_error_msg": "There's been an error updating the blog D:",
     "English": "English",
@@ -75,5 +77,14 @@
     "History": "History",
     "Arts": "Arts",
     "edit_cat_error_msg": "There's been an error updating the category, please try again later.",
-    "Delete Category": "Delete Category"
+    "Delete Category": "Delete Category",
+    "create_post_error_msg": "There's been an error creating the post.",
+    "Post Name": "Post Name",
+    "Post Content": "Post Content",
+    "Post Thumbnail": "Post Thumbnail",
+    "Draft": "Draft",
+    "Tags": "Tags",
+    "Category": "Category",
+    "Post!": "Post!",
+    "post_tags_text": "Enter your tags separated by a comma, like: (tag1,tag2,tag3,tag4)"
 }

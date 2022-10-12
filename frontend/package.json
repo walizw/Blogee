@@ -8,6 +8,10 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.25.0",
+    "@editorjs/header": "^2.6.2",
+    "@editorjs/nested-list": "^1.0.2",
+    "@editorjs/table": "^2.0.4",
     "@intlify/unplugin-vue-i18n": "^0.7.0",
     "axios": "^1.1.0",
     "vue": "^3.2.38",

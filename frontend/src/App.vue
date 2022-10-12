@@ -1,6 +1,6 @@
 <template>
     <Header />
-    <RouterView :user_id="user_id" />
+    <RouterView />
     <Footer />
 </template>
 
