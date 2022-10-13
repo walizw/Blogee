@@ -22,6 +22,9 @@
 
  export default {
      name: "EditorJS",
+     props: {
+	 data: String
+     },
      data () {
 	 return {
 	     editor: null,
@@ -57,6 +60,9 @@
 		     class: ImagePlugin,
 		     inlineToolbar: true
 		 }
+	     },
+	     onReady: () => {
+		 this.editor.render (JSON.parse (this.data))
 	     },
 	     onChange: (api, event) => {
 		 self.update_data ()

@@ -45,7 +45,7 @@ class ImagePlugin {
 	image.src = url
 	image.className = "img-fluid lightense-target"
 	caption.contentEditable = true
-	caption.value = captionText || ""
+	caption.innerHTML = captionText || ""
 
 	this.wrapper.innerHTML = ""
 	this.wrapper.appendChild (wrapper)

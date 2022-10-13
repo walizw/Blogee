@@ -13,6 +13,7 @@ import CreateCategory from "../views/my/CreateCategory.vue"
 import EditCategory from "../views/my/EditCategory.vue"
 import DeleteCategory from "../views/my/DeleteCategory.vue"
 import NewPost from "../views/my/NewPost.vue"
+import EditPost from "../views/my/EditPost.vue"
 
 import Logout from "../views/my/Logout.vue"
 
@@ -83,8 +84,13 @@ const router = createRouter({
 	},
 	{
 	    path: "/my/blogs/:id/new_post",
-	    name: "New post",
+	    name: "New Post",
 	    component: NewPost
+	},
+	{
+	    path: "/my/post/:id/edit",
+	    name: "Edit Post",
+	    component: EditPost
 	},
 	
 	{

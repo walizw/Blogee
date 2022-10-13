@@ -52,7 +52,6 @@
     "create_cat_subtitle": "Create a new category.",
     "category_edit_subtitle": "Edit this category.",
     "Posts": "Posts",
-    "New post": "New Post",
     "New Post": "New Post",
     "edit_blog_error_msg": "There's been an error updating the blog D:",
     "English": "English",
@@ -86,5 +85,7 @@
     "Tags": "Tags",
     "Category": "Category",
     "Post!": "Post!",
-    "post_tags_text": "Enter your tags separated by a comma, like: (tag1,tag2,tag3,tag4)"
+    "post_tags_text": "Enter your tags separated by a comma, like: (tag1,tag2,tag3,tag4)",
+    "Edit Post": "Edit Post",
+    "edit_post_error_msg": "There's been an error updating this post, please try again later."
 }

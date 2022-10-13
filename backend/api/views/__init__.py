@@ -8,4 +8,4 @@ from .blog import BlogsAPIView, BlogAPIView, BlogCreateAPIView, \
 from .category import CategoryCreateAPIView, CategoryAPIView, \
     CategoryUpdateAPIView, CategoryDeleteAPIView
 
-from .post import PostsAPIView
+from .post import PostsAPIView, PostAPIView, PostUpdateAPIView

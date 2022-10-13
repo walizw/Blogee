@@ -22,4 +22,6 @@ urlpatterns = [
     path ("category/<int:pk>/update/", views.CategoryUpdateAPIView.as_view ()),
     path ("category/<int:pk>/delete/", views.CategoryDeleteAPIView.as_view ()),
     path ("posts/", views.PostsAPIView.as_view ()),
+    path ("post/<int:pk>/", views.PostAPIView.as_view ()),
+    path ("post/<int:pk>/update/", views.PostUpdateAPIView.as_view ()),
 ]
